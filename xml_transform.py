@@ -4,7 +4,7 @@ from lxml import etree
 from flask import Flask, render_template, flash
 
 from flask_wtf import Form
-from wtforms import StringField, TextField, TextAreaField
+from wtforms import StringField, TextAreaField
 from wtforms.validators import DataRequired
 
 app = Flask(__name__)
