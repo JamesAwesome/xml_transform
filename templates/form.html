@@ -1,6 +1,22 @@
-<form method="POST" action="/submit-xml">
+<form method="POST" action="/xml-transform">
     {{ form.hidden_tag() }}
     {{ form.xml.label }} {{ form.xml(cols="35", rows="20") }}
     {{ form.xsl.label }} {{ form.xsl(cols="35", rows="20") }}
     <input type="submit" value="Go" size="500">
 </form>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for category, message in messages %}
+      <li class="{{ category }}">{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+<pre>
+  <code>
+{{ xml }}
+  </code>
+</pre>

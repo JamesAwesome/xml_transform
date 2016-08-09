@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 
 from lxml import etree
-from flask import Flask, request, session, g, redirect, url_for, abort, \
-    render_template, flash
+from flask import Flask, render_template, flash
 
 from flask_wtf import Form
 from wtforms import StringField, TextField, TextAreaField
@@ -34,12 +33,21 @@ def transform_xml(xml, xsl):
 
 @app.route('/xml-transform', methods=['GET', 'POST'])
 def index():
-    return render_template('form.html', form=XmlInputForm())
-
-@app.route('/submit-xml', methods=['GET', 'POST'])
-def transform():
     form = XmlInputForm()
-    if form.validate_on_submit():
-        return render_template('results.html', xml=transform_xml(form.xml.data, form.xsl.data))
 
-    return 'fail'
+    if form.validate_on_submit():
+        try:
+            xml = transform_xml(form.xml.data, form.xsl.data)
+        except Exception as e:
+            flash('ERROR: {}'.format(str(e)))
+            return render_template('form.html',
+                                   form=XmlInputForm(),
+                                   xml='')
+
+        return render_template('form.html',
+                               form=XmlInputForm(),
+                               xml=transform_xml(form.xml.data, form.xsl.data))
+
+    return render_template('form.html',
+                           form=XmlInputForm(),
+                           xml='')
