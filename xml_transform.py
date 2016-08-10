@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import os
 from lxml import etree
 from flask import Flask, render_template, flash
 
@@ -11,10 +12,8 @@ app = Flask(__name__)
 app.config.from_object(__name__)
 
 app.config.update({
-  'SECRET_KEY': '6KI2Iei1iUkWxcNaeNkZjhuYiBTDGmX/j1bJRgj9zts',
+  'SECRET_KEY': os.environ.get('XML_TRANSFORM_SECRET_KEY'),
 })
-
-app.config.from_envvar('XML_TRANSFORM', silent=True)
 
 class XmlInputForm(Form):
       xml = TextAreaField('XML', validators=[DataRequired()])
