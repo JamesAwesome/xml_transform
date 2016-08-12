@@ -1,3 +1,16 @@
 textarea {
     resize: none;
 }
+
+td {
+    /* <http://www.w3.org/wiki/CSS/Properties/text-align>
+     * left, right, center, justify, inherit
+     */
+    text-align: center;
+    /* <http://www.w3.org/wiki/CSS/Properties/vertical-align>
+     * baseline, sub, super, top, text-top, middle,
+     * bottom, text-bottom, length, or a value in percentage
+     */
+    vertical-align: top;
+    padding: 10px;
+}

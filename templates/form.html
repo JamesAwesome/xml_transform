@@ -7,12 +7,26 @@
 {% endblock %}
 
 {% block content %}
+
+<center>
 <form method="POST" action="/xml-transform">
     {{ form.hidden_tag() }}
-    {{ form.xml.label }} {{ form.xml(cols="60", rows="20") }}
-    {{ form.xsl.label }} {{ form.xsl(cols="60", rows="20") }}
-    <input type="submit" value="Go" size="500">
+<table><tr><td>
+    {{ form.xml.label }}
+</td><td>
+    {{ form.xsl.label }}
+</td></tr>
+<tr><td>
+    {{ form.xml(cols="65", rows="20") }}
+</td><td>
+    {{ form.xsl(cols="65", rows="20") }}
+</td></tr>
+<tr><td colspan="2">
+<input type="submit" value="Transform" size="500">
+</td></tr></table>
+
 </form>
+</center>
 
 {% with messages = get_flashed_messages(with_categories=true) %}
   {% if messages %}
