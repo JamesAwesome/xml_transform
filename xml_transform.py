@@ -54,7 +54,7 @@ def index():
             flash('ERROR: {}'.format(str(e)))
             return render_template('form.html',
                                    form=XmlInputForm(),
-                                   xml='')
+                                   )
 
         return render_template('form.html',
                                form=XmlInputForm(),
@@ -62,4 +62,4 @@ def index():
 
     return render_template('form.html',
                            form=XmlInputForm(),
-                           xml='')
+                           )
