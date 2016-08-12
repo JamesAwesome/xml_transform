@@ -1,3 +1,12 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}XML Transform{% endblock %}
+
+{% block navbar %}
+{{nav.mynavbar.render()}}
+{% endblock %}
+
+{% block content %}
 <form method="POST" action="/xml-transform">
     {{ form.hidden_tag() }}
     {{ form.xml.label }} {{ form.xml(cols="35", rows="20") }}
@@ -20,3 +29,10 @@
 {{ xml }}
   </code>
 </pre>
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet"
+      href="{{url_for('.static', filename='stylesheet.css')}}">
+{% endblock %}

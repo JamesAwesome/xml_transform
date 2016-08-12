@@ -3,12 +3,25 @@
 import os
 from lxml import etree
 from flask import Flask, render_template, flash
-
+from flask_bootstrap import Bootstrap
 from flask_wtf import Form
 from wtforms import StringField, TextAreaField
 from wtforms.validators import DataRequired
+from flask_nav import Nav
+from flask_nav.elements import Navbar, View
+
+nav = Nav()
+
+@nav.navigation()
+def mynavbar():
+    return Navbar(
+        'XML Transform',
+    )
 
 app = Flask(__name__)
+Bootstrap(app)
+nav.init_app(app)
+
 app.config.from_object(__name__)
 
 app.config.update({
