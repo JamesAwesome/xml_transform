@@ -7,6 +7,8 @@ webform.
 
 * XML must not contain an encoding in the decleration: (WRONG: `<?xml version="1.0" encoding="UTF-8" ?>` RIGHT: `<?xml version="1.0" ?>`)
 
+## Supports
+ * Python3
 
 ## Usage
 
