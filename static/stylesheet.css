@@ -14,3 +14,14 @@ td {
     vertical-align: top;
     padding: 10px;
 }
+
+div.navbar.navbar-fixed-top {
+    background-color: black;
+    color: grey;
+    font-size: 28px;
+    text-indent: 18px;
+}
+
+div.form {
+    margin-top: 52px;
+}

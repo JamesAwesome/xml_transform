@@ -3,12 +3,15 @@
 {% block title %}XML Transform{% endblock %}
 
 {% block navbar %}
-{{nav.mynavbar.render()}}
+<div class="navbar navbar-fixed-top"><p>
+XML Transform
+</p></div>
 {% endblock %}
 
 {% block content %}
 
 <center>
+<div class="form">
 <form method="POST" action="/xml-transform">
     {{ form.hidden_tag() }}
 <table><tr><td>
@@ -24,8 +27,8 @@
 <tr><td colspan="2">
 <input type="submit" value="Transform" size="500">
 </td></tr></table>
-
 </form>
+</div>
 </center>
 
 {% with messages = get_flashed_messages(with_categories=true) %}
