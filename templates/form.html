@@ -3,7 +3,7 @@
 {% block title %}XML Transform{% endblock %}
 
 {% block navbar %}
-<div class="navbar navbar-fixed-top"><p>
+<div class="navbar"><p>
 XML Transform
 </p></div>
 {% endblock %}
@@ -14,22 +14,33 @@ XML Transform
 <div class="form">
 <form method="POST" action="/xml-transform">
     {{ form.hidden_tag() }}
-<table><tr><td>
-    {{ form.xml.label }}
-</td><td>
-    {{ form.xsl.label }}
-</td></tr>
-<tr><td>
+
+  <div class="form_left">
+    {{ form.xml.label }}<br>
     {{ form.xml(cols="65", rows="20") }}
-</td><td>
+  </div>
+
+  <div class="form_right">
+    {{ form.xsl.label }}<br>
     {{ form.xsl(cols="65", rows="20") }}
-</td></tr>
-<tr><td colspan="2">
-<input type="submit" value="Transform" size="500">
-</td></tr></table>
+  </div>
+  <p>
+  <div class="form_bottom">
+    <input type="submit" value="Transform" size="500">
+  </div>
 </form>
 </div>
 </center>
+
+{% block scripts %}
+  {{super()}}
+    <script src="{{url_for('static', filename='bundle.js')}}"></script>
+    <script src="{{url_for('static', filename='FileSaver.js')}}"></script>
+    <script src="{{url_for('static', filename='clipboard.min.js')}}"></script>
+    <script>new Clipboard('.btn');</script>
+{% endblock %}
+
+<p>
 
 {% with messages = get_flashed_messages(with_categories=true) %}
   {% if messages %}
@@ -42,11 +53,15 @@ XML Transform
 {% endwith %}
 
 {% if xml is defined %}
-<pre>
-  <code>
-{{ xml }}
-  </code>
-</pre>
+<div id="inline_content" style="display:none">
+<center>
+<textarea cols="110" rows="20" id="output_xml">{{ xml }}</textarea>
+<button class="btn" id="btn-save">Create file</button>
+<button class="btn" data-clipboard-action="copy" data-clipboard-target='textarea#output_xml'>
+    Copy to clipboard
+</button>
+</center>
+</div>
 {% endif %}
 
 {% endblock %}

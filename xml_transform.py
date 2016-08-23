@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import os
+import os, re
 from lxml import etree
 from flask import Flask, render_template, flash
 from flask_bootstrap import Bootstrap

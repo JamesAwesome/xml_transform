@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "browser-filesaver": "^1.1.1",
+    "clipboard": "^1.5.12",
+    "drag-drop": "^2.12.1",
+    "jquery-colorbox": "^1.6.4"
+  }
+}
