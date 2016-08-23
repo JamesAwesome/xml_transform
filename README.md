@@ -9,6 +9,7 @@ webform.
 
 ## Supports
  * Python3
+ * Node 6
 
 ## Usage
 
@@ -22,7 +23,7 @@ scripting attacks. You can do this via openssl with the following command:
 ```bash
 git clone git@github.com:jamesawesome/xml_transform
 cd xml_transform/
-pip install -r requirements.txt
+./build.sh
 export XML_TRANSFORM_SECRET_KEY=<YOUR CSRF TOKEN>
 gunicorn --pythonpath /srv/xml_transform --bind 0.0.0.0 --log-level info --log-file - --access-logfile - xml_transform:app
 ```
