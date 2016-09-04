@@ -21,7 +21,16 @@ class XmlInputForm(Form):
       xml = TextAreaField('XML', validators=[DataRequired()])
       xsl = TextAreaField('XSL', validators=[DataRequired()])
 
+def sanitize(string):
+   #find encoding string (group2)
+   match = re.match(r'(<\?xml.*version="1.0".*(encoding="UTF-8").*?>)', string)
+   #remove encoding string
+   enc = match.group(2)
+   cooked = string.replace(enc, "")
+   return cooked
+
 def transform_xml(xml, xsl):
+    xml = sanitize(xml)
     dom = etree.fromstring(xml)
     xslt = etree.fromstring(xsl)
     transform = etree.XSLT(xslt)
